@@ -1,3 +1,3 @@
-module example.com/learn-go-by-testing
+module github.com/mailtomainak/learn-golang-with-testing
 
 go 1.14
