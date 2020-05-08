@@ -1,9 +1,9 @@
 package iteration
 
-// Repeat a given char 5 times
-func Repeat(character string) (repeated string) {
-	for counter := 0; counter < 5; counter++ {
-		repeated += character
-	}
+import "strings"
+
+// Repeat a given char n times
+func Repeat(character string, numberOfRepeats int) (repeated string) {
+	repeated = strings.Repeat(character, numberOfRepeats)
 	return
 }
