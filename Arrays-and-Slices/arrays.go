@@ -7,3 +7,12 @@ func Sum(nums []int) (expectedSum int) {
 	}
 	return
 }
+
+// SumAll calculates sum of provided array
+func SumAll(nums ...[]int) []int {
+	var sum []int
+	for _, numarr := range nums {
+		sum = append(sum, Sum(numarr))
+	}
+	return sum
+}
