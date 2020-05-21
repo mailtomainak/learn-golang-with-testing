@@ -1,13 +1,9 @@
 package pointers
 
-import "fmt"
+import "errors"
 
-// Bitcoin type to be used in wallets
-type Bitcoin int
-
-func (b Bitcoin) String() string {
-	return fmt.Sprintf("%d BTC", b)
-}
+// ErrInsufficientFunds is thrown when there are insufficient funds
+var ErrInsufficientFunds = errors.New("cannot withdraw, insufficient funds")
 
 // Wallet type that represents a real world wallet
 type Wallet struct {
@@ -22,4 +18,14 @@ func (w *Wallet) Deposit(amount Bitcoin) {
 // Balance returns the amount of money in the wallet
 func (w *Wallet) Balance() Bitcoin {
 	return w.balance
+}
+
+// Withdraw bitcoins from the balance
+func (w *Wallet) Withdraw(amount Bitcoin) error {
+
+	if amount > w.balance {
+		return ErrInsufficientFunds
+	}
+	w.balance -= amount
+	return nil
 }
